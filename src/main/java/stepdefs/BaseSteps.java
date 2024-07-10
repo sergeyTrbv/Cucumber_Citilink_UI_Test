@@ -5,7 +5,7 @@ import stash.Context;
 import stash.TestContext;
 
 /**
- * Базовый класс Steps
+ * Базовый класс BaseSteps для шагов тестирования. Он содержит два основных поля:
  */
 public class BaseSteps {
 

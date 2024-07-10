@@ -37,7 +37,9 @@ public class Hooks {
     public void quitWebDriver() {
         System.out.println("Завершение работы веб-драйвера");
         ChromeDriver chromeDriver = (ChromeDriver) TestContext.getInstance().get(String.valueOf(Context.CHROMEDRIVER));
-        chromeDriver.quit();
+
+//        chromeDriver.quit();
+
     }
 
 
@@ -59,46 +61,4 @@ public class Hooks {
     }
 
 
-//    /**
-//     * order задает очередность выполнения методов по принципу FIFO
-//     */
-//    @Before(order = 1)
-//    public void start_01(){
-//        System.out.println("start_01");
-//    }
-//
-//    @Before (order = 2)
-//    public void start_02(){
-//        System.out.println("start_02");
-//    }
-//
-//    @After(order = 1)
-//    public void end_01(){
-//        System.out.println("end_01");
-//    }
-//
-//    @After(order = 2)
-//    public void end_02(){
-//        System.out.println("end_02");
-//    }
-//
-//    @Before(value = "@correct", order = 3)
-//    public void customBefore() {
-//        System.out.println("Before только для фичи @correct");
-//    }
-//
-//    @After(value = "@correct", order = 3)
-//    public void customAfter() {
-//        System.out.println("After только для фичи @correct");
-//    }
-//
-//    @Before(value = "not @fail", order = 3)
-//    public void withoutBefore() {
-//        System.out.println("start_03 для фич кроме @fail");
-//    }
-//
-//    @After(value = "not @fail", order = 3)
-//    public void withoutAfter() {
-//        System.out.println("end_03 для фич кроме @fail");
-//    }
 }

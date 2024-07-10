@@ -13,7 +13,6 @@ public interface TestProperties extends Config {
 
     @Key("citilink.url")
     String citilinkUrl();
-
 }
 
 
