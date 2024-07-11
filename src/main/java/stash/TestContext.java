@@ -5,6 +5,8 @@ import java.util.Map;
 
 /**
  * Класс управляет хранилищем данных, которые передаются между шагами теста
+ *
+ * @author Ruslan Borodin
  */
 public class TestContext {
 

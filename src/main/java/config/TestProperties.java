@@ -15,14 +15,3 @@ public interface TestProperties extends Config {
     String citilinkUrl();
 }
 
-
-
-//
-//    @Key("reqresapi.url")
-//    String reqresApiUrl();
-//
-//    @Key("testdata.json.path")
-//    String testDataJsonPath();
-//
-//    @Key("bellintegrator.search.url")
-//    String bellintegrator_search_url();

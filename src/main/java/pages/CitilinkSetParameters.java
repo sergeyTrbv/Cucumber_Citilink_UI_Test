@@ -8,20 +8,55 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
+/**
+ * Класс {@code CitilinkSetParameters} предназначен для установки параметров фильтрации на странице каталога Citilink.
+ * Он использует Selenium WebDriver для взаимодействия с веб-элементами.
+ *
+ * @author SergeyTrbv
+ */
 public class CitilinkSetParameters {
 
+    /**
+     * Константа с шаблоном XPath для элемента "Бренд" в фильтре.
+     */
     private static final String BRAND_TABLE = "//div[@data-meta-name='FilterDropdown' and @data-meta-value='Бренд']";
+
+    /**
+     * Константа, содержащая начало XPath для чекбокса значения фильтра.
+     */
     private static final String CHECKBOX_VALUE_HEAD = "//input[@id='";
+
+    /**
+     * Константа, содержащая конец XPath для чекбокса значения фильтра.
+     */
     private static final String CHECKBOX_VALUE_TAIL = "']";
-    private WebDriver chromeDriver;
+
+    /**
+     * Веб-драйвер для взаимодействия с браузером.
+     */
+    protected WebDriver chromeDriver;
+
+    /**
+     * Объект типа {@code WebDriverWait} использующийся для ожидания элементов на странице.
+     */
     private WebDriverWait wait;
 
+
+    /**
+     * Конструктор класса, инициализирующий WebDriver и WebDriverWait.
+     *
+     * @param chromeDriver экземпляр WebDriver для взаимодействия с браузером.
+     */
     public CitilinkSetParameters(WebDriver chromeDriver) {
         this.chromeDriver = chromeDriver;
         this.wait = new WebDriverWait(chromeDriver, Duration.ofSeconds(10));
     }
 
-//    private void choosingBrand(String value) {
+    /**
+     * Метод устанавливает параметры фильтрации на странице каталога.
+     *
+     * @param value значение параметра для установки.
+     */
     public void setParameters(String value) {
         JavascriptExecutor js = (JavascriptExecutor) chromeDriver;
         WebElement brandTable = chromeDriver.findElement(By.xpath(BRAND_TABLE));
@@ -36,9 +71,4 @@ public class CitilinkSetParameters {
             e.printStackTrace();
         }
     }
-
-//    public void setParameters(String value) {
-//        choosingBrand(value);
-//    }
-
 }

@@ -12,6 +12,8 @@ import java.time.Duration;
 /**
  * Класс задает методы, которые могут выполняться в различных точках цикла выполнения Cucumber.
  * Обычно они используются для настройки и демонтажа среды до и после каждого сценария
+ *
+ * @author Ruslan Borodin
  */
 public class Hooks {
 
@@ -37,14 +39,13 @@ public class Hooks {
     public void quitWebDriver() {
         System.out.println("Завершение работы веб-драйвера");
         ChromeDriver chromeDriver = (ChromeDriver) TestContext.getInstance().get(String.valueOf(Context.CHROMEDRIVER));
-
 //        chromeDriver.quit();
-
     }
 
 
     /**
      * Получение методанных сценария по завершении теста
+     *
      * @param scenario - объект метаданных сценария
      * отсутствие тега после @Before говорит о том, что метод применяется ко всем тестам
      */

@@ -6,6 +6,8 @@ import stash.TestContext;
 
 /**
  * Базовый класс BaseSteps для шагов тестирования. Он содержит два основных поля:
+ *
+ * @author Ruslan Borodin
  */
 public class BaseSteps {
 

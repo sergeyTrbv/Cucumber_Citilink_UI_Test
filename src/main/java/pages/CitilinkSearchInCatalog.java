@@ -1,7 +1,7 @@
 package pages;
 
+import helpers.Assertions;
 import helpers.CookieManager;
-import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,17 +11,49 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
+/**
+ * Класс {@code CitilinkSearchInCatalog} предназначен для поиска и навигации по разделам каталога на сайте Citilink.
+ * Он использует Selenium WebDriver для взаимодействия с веб-элементами.
+ *
+ * @author SergeyTrbv
+ */
 public class CitilinkSearchInCatalog {
 
+
+    /**
+     * Константа с шаблоном XPath кнопки меню каталога.
+     */
     private static final String CATALOG_MENU_BUTTON = "//a[@data-meta-name='DesktopHeaderFixed__catalog-menu']";
+
+    /**
+     * Константа с шаблоном XPath кнопки "Смартфоны и планшеты" в выпадающем меню каталога.
+     */
     private static final String SMARTPHONES_AND_TABLETS_BUTTON = "//div[@class='PopupScrollContainer']//span[@color='None' and text()='Смартфоны и планшеты']";
+
+    /**
+     * Константа с шаблоном XPath кнопки "Смартфоны" в подменю "Смартфоны и планшеты".
+     */
     private static final String SMARTPHONES_BUTTON = "//div[@class='rcs-inner-container']//span[text()='Смартфоны']";
+
+    /**
+     * Константа с шаблоном XPath заголовка страницы "Смартфоны".
+     */
     private static final String SMARTPHONE_PAGE_TITLE = "//h1[text()='Смартфоны']";
-    private WebDriver chromeDriver;
+
+    /**
+     * Веб-драйвер для взаимодействия с браузером.
+     */
+    protected WebDriver chromeDriver;
+
+    /**
+     * Объект типа {@code WebDriverWait} использующийся для ожидания элементов на странице.
+     */
     private WebDriverWait wait;
 
     /**
-     * Конструктор класса, инициализирующий WebDriver и WebDriverWait..
+     * Конструктор класса, инициализирующий WebDriver и WebDriverWait.
+     *
+     * @param chromeDriver экземпляр WebDriver для взаимодействия с браузером.
      */
     public CitilinkSearchInCatalog(WebDriver chromeDriver) {
         this.chromeDriver = chromeDriver;
@@ -63,23 +95,26 @@ public class CitilinkSearchInCatalog {
     }
 
     /**
-     * Метод {@code verifyTransitionToLaptopPage} проверяет, что произошел переход на страницу "Ноутбуки" и
-     * URL соответствует ожидаемому.
+     * Метод проверяет, что произошел переход на страницу "Смартфоны" и URL соответствует ожидаемому.
+     *
+     * @param chapter     название раздела.
+     * @param expectedUrl ожидаемый URL страницы.
      */
     private void verifyTransitionToSmartphonesPage(String chapter, String expectedUrl) {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(SMARTPHONE_PAGE_TITLE)));
         String currentUrl = chromeDriver.getCurrentUrl();
-//        Assertions.assertEquals(expectedUrl, currentUrl, "URL страницы не соответствует ожидаемому");
+        Assertions.assertEquals(expectedUrl, currentUrl, "URL страницы не соответствует ожидаемому");
     }
 
     /**
-     * Метод {@code searchChapterInCatalog} выполняет последовательность действий для поиска раздела "Ноутбуки" в
-     * каталоге и проверяет переход на соответствующую страницу.
+     * Метод выполняет последовательность действий для поиска раздела "Смартфоны" в каталоге и проверяет
+     * переход на соответствующую страницу.
+     *
+     * @param chapter     название раздела.
+     * @param expectedUrl ожидаемый URL страницы.
      */
     public void searchChapterInCatalog(String chapter, String expectedUrl) {
-
         CookieManager.getInstance(chromeDriver).clickCookieIfNeeded();
-
         openCatalog();
         hoverOverSmartphonesAndTablets();
         selectSmartphones();
