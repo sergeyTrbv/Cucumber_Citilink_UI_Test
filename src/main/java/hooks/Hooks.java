@@ -28,7 +28,7 @@ public class Hooks {
         ChromeDriver chromeDriver = new ChromeDriver();
         TestContext testContext = TestContext.getInstance();
         chromeDriver.manage().window().maximize();
-        chromeDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+        chromeDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         testContext.put(String.valueOf(Context.CHROMEDRIVER), chromeDriver);
     }
 
@@ -39,7 +39,7 @@ public class Hooks {
     public void quitWebDriver() {
         System.out.println("Завершение работы веб-драйвера");
         ChromeDriver chromeDriver = (ChromeDriver) TestContext.getInstance().get(String.valueOf(Context.CHROMEDRIVER));
-//        chromeDriver.quit();
+        chromeDriver.quit();
     }
 
 

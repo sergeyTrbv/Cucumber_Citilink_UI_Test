@@ -63,10 +63,10 @@ public class CitilinkSetParameters {
         js.executeScript("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", brandTable);
 
         String xpath = CHECKBOX_VALUE_HEAD + value.toLowerCase() + CHECKBOX_VALUE_TAIL;
-        WebElement checkBoxApple = chromeDriver.findElement(By.xpath(xpath));
-        checkBoxApple.click();
+        WebElement checkBox = chromeDriver.findElement(By.xpath(xpath));
+        checkBox.click();
         try {
-            Thread.sleep(1000);
+            Thread.sleep(2500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

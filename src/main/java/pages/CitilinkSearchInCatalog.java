@@ -76,7 +76,7 @@ public class CitilinkSearchInCatalog {
     }
 
     /**
-     * Метод {@code hoverOverLaptopAndPC} наводит курсор на кнопку "Смартфоны и телефоны" в выпадающем меню каталога.
+     * Метод {@code hoverOverSmartphonesAndTablets} наводит курсор на кнопку "Смартфоны и телефоны" в выпадающем меню каталога.
      */
     private void hoverOverSmartphonesAndTablets() {
         WebElement laptopAndPCButton = wait.until(ExpectedConditions.
@@ -86,7 +86,7 @@ public class CitilinkSearchInCatalog {
     }
 
     /**
-     * Метод {@code selectLaptop} выбирает раздел "Ноутбуки" в подменю "Ноутбуки и компьютеры".
+     * Метод {@code selectSmartphones} выбирает раздел "Cмартфоны" в подменю "Смартфоны и телефоны".
      */
     private void selectSmartphones() {
         WebElement laptopButton = wait.until(ExpectedConditions.
@@ -95,15 +95,19 @@ public class CitilinkSearchInCatalog {
     }
 
     /**
-     * Метод проверяет, что произошел переход на страницу "Смартфоны" и URL соответствует ожидаемому.
+     * Метод проверяет, что произошел переход на страницу "Смартфоны" заголовок соответствует ожидаемому.
      *
-     * @param chapter     название раздела.
-     * @param expectedUrl ожидаемый URL страницы.
+     * @param chapter название раздела.
      */
-    private void verifyTransitionToSmartphonesPage(String chapter, String expectedUrl) {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(SMARTPHONE_PAGE_TITLE)));
+    private void verifyTransitionToSmartphonesPage(String chapter) {
+//        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(SMARTPHONE_PAGE_TITLE)));
+
+        WebElement pageTitle = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(SMARTPHONE_PAGE_TITLE)));
+        String title = pageTitle.getText();
+        System.out.println(title);
+
         String currentUrl = chromeDriver.getCurrentUrl();
-        Assertions.assertEquals(expectedUrl, currentUrl, "URL страницы не соответствует ожидаемому");
+        Assertions.assertEquals(chapter, title, "URL страницы не соответствует ожидаемому");
     }
 
     /**
@@ -111,13 +115,12 @@ public class CitilinkSearchInCatalog {
      * переход на соответствующую страницу.
      *
      * @param chapter     название раздела.
-     * @param expectedUrl ожидаемый URL страницы.
      */
-    public void searchChapterInCatalog(String chapter, String expectedUrl) {
+    public void searchChapterInCatalog(String chapter) {
         CookieManager.getInstance(chromeDriver).clickCookieIfNeeded();
         openCatalog();
         hoverOverSmartphonesAndTablets();
         selectSmartphones();
-        verifyTransitionToSmartphonesPage(chapter, expectedUrl);
+        verifyTransitionToSmartphonesPage(chapter);
     }
 }

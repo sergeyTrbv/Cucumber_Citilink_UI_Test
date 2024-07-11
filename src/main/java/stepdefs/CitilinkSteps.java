@@ -24,7 +24,7 @@ public class CitilinkSteps extends BaseSteps {
     public void пользовательОткрываетКаталогИВыполняетПоискРазделаССмартфонами() {
         CitilinkSearchInCatalog citilinkSearchInCatalog = (CitilinkSearchInCatalog) testContext.
                 get(Context.CURRENT_PAGE.name());
-        citilinkSearchInCatalog.searchChapterInCatalog("Каталог", "Смартфоны и планшеты");
+        citilinkSearchInCatalog.searchChapterInCatalog("Смартфоны");
         CitilinkSetParameters citilinkSetParameters = new CitilinkSetParameters(chromeDriver);
         testContext.put(Context.CURRENT_PAGE.name(), citilinkSetParameters);
     }

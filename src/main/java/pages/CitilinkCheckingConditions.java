@@ -1,6 +1,7 @@
 package pages;
 
 import helpers.Assertions;
+import helpers.CookieManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -119,6 +120,7 @@ public class CitilinkCheckingConditions {
      * @param element элемент, который нужно прокрутить и кликнуть.
      */
     private void scrollIntoViewAndClick(WebElement element) {
+        CookieManager.getInstance(chromeDriver).clickCookieIfNeeded();
         JavascriptExecutor js = (JavascriptExecutor) chromeDriver;
         js.executeScript("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", element);
         wait.until(ExpectedConditions.elementToBeClickable(element));
